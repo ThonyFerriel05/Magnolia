@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://dbwk1tfqffqah"]
+
+[ext_resource type="Script" uid="uid://jcmtsvldcn6r" path="res://jugador_volador.gd" id="1_ifbx7"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o2835"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_ifbx7"]
+sky_material = SubResource("ProceduralSkyMaterial_o2835")
+
+[sub_resource type="Environment" id="Environment_cf7r2"]
+background_mode = 2
+sky = SubResource("Sky_ifbx7")
+glow_enabled = true
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_exyfr"]
+
+[node name="JuegoCompleto" type="Node3D" unique_id=940593283]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=209386635]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=198315102]
+environment = SubResource("Environment_cf7r2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=503258018]
+
+[node name="Zona1_Tierra" type="Node3D" parent="." unique_id=2012171560]
+
+[node name="Suelo_Tierra" type="CSGBox3D" parent="Zona1_Tierra" unique_id=1820841084]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.47253132, 0)
+use_collision = true
+size = Vector3(40, 0, 40)
+
+[node name="Nave_Intro" type="CSGBox3D" parent="Zona1_Tierra" unique_id=1160011470]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+size = Vector3(4, 4, 8)
+
+[node name="Camara_Intro" type="Camera3D" parent="Zona1_Tierra" unique_id=1084833103]
+transform = Transform3D(-3.7899033e-05, -0.32278407, 0.94647264, -1.29250475e-05, 0.94647264, 0.32278407, -1, 0, -4.0042396e-05, 7.744702, 5.109176, 0)
+
+[node name="Zona2_Espacio" type="Node3D" parent="." unique_id=452657353]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 500, 0)
+
+[node name="Jugador_Volador" type="CharacterBody3D" parent="Zona2_Espacio" unique_id=1368057490]
+script = ExtResource("1_ifbx7")
+
+[node name="Camera3D" type="Camera3D" parent="Zona2_Espacio/Jugador_Volador" unique_id=49271042]
+transform = Transform3D(0.7521442, 0, -0.6589985, 0, 1, 0, 0.6589985, 0, 0.7521442, -1.3969269, 0, 0)
+current = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Zona2_Espacio/Jugador_Volador" unique_id=828792646]
+shape = SubResource("CapsuleShape3D_exyfr")
+
+[node name="Nave_Nodriza_Base" type="CSGBox3D" parent="Zona2_Espacio" unique_id=1503543342]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.003, -1.268, -200)
+size = Vector3(30, 20, 80)
+
+[node name="Mega_Soldado1" type="CSGBox3D" parent="Zona2_Espacio" unique_id=678548099]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 11.587769, -87.64638)
+use_collision = true
+size = Vector3(2, 2, 2)
+
+[node name="Mega_Soldado2" type="CSGBox3D" parent="Zona2_Espacio" unique_id=1824626071]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.00641, -6.810425, -81.60795)
+use_collision = true
+size = Vector3(2, 2, 2)
+
+[node name="Mega_Soldado3" type="CSGBox3D" parent="Zona2_Espacio" unique_id=453831138]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.607903, -27.492981, -140.00061)
+use_collision = true
+size = Vector3(2, 2, 2)
+
+[node name="Mega_Soldado4" type="CSGBox3D" parent="Zona2_Espacio" unique_id=800568694]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.176157, 18.39331, -116.95442)
+use_collision = true
+size = Vector3(2, 2, 2)
+
+[node name="Mega_Soldado5" type="CSGBox3D" parent="Zona2_Espacio" unique_id=893358757]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.665592, -2.1165771, -88.81616)
+use_collision = true
+size = Vector3(2, 2, 2)
+
+[node name="Zona3_Nave" type="Node3D" parent="." unique_id=1188039663]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1000, 0)
